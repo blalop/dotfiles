@@ -1,5 +1,6 @@
 " colors
-colorscheme molokai
+syntax on
+colorscheme onedark
 
 " Tabs
 set tabstop=4 "visual spaces per tab
