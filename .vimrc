@@ -1,6 +1,6 @@
 " colors
 syntax on
-colorscheme onedark
+"colorscheme onedark
 
 " Tabs
 set tabstop=4 "visual spaces per tab
@@ -14,7 +14,6 @@ set autoindent
 " UI
 set number
 set wildmenu
-set cursorline
 set showcmd
 set lazyredraw
 set showmatch
@@ -31,9 +30,9 @@ set hlsearch
 set foldenable
 set foldlevelstart=8
 
-" Map auto complete of (, ", ', [
+" Map auto complete of (, ", {, ', [
 :inoremap ( ()<Esc>:let leavechar=")"<CR>i
 :inoremap [ []<Esc>:let leavechar="]"<CR>i
+:inoremap { {}<Esc>:let leavechar="}"<CR>i
 :inoremap " ""<Esc>:let leavechar="""<CR>i
 :inoremap ' ''<Esc>:let leavechar="'"<CR>i
-
