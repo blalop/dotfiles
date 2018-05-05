@@ -5,7 +5,6 @@ ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="false"
 HYPHEN_SENSITIVE="true"
 export UPDATE_ZSH_DAYS=14
-COMPLETION_WAITING_DOTS="true"
 plugins=(
   git
 )
