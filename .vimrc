@@ -1,38 +1,28 @@
-" colors
 syntax on
-"colorscheme onedark
 
-" Tabs
-set tabstop=4 "visual spaces per tab
-set softtabstop=4 "spaces in tab
-set expandtab "tab as spaces
+set tabstop=4
+set softtabstop=4
+set expandtab
 
-" Indent
-set smartindent
 set autoindent
+filetype indent plugin on
 
-" UI
+set ignorecase
+set smartcase
+set hlsearch
+
 set number
 set wildmenu
 set showcmd
 set lazyredraw
 set showmatch
 set ruler
-
-" Settings
 set hidden
 set nowrap
 
-" Search related stuff
-set hlsearch
+set nobackup
+set nowb
+set noswapfile
 
-" Folding
-set foldenable
-set foldlevelstart=8
+set backspace=indent,eol,start
 
-" Map auto complete of (, ", {, ', [
-:inoremap ( ()<Esc>:let leavechar=")"<CR>i
-:inoremap [ []<Esc>:let leavechar="]"<CR>i
-:inoremap { {}<Esc>:let leavechar="}"<CR>i
-:inoremap " ""<Esc>:let leavechar="""<CR>i
-:inoremap ' ''<Esc>:let leavechar="'"<CR>i
