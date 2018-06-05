@@ -23,6 +23,9 @@ bind 'set completion-map-case on'
 bind 'set page-completions off'
 bind 'set menu-complete-display-prefix on'
 bind 'set completion-query-items 0'
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
 
 # History completion
 bind '"\e[A": history-search-backward'
@@ -31,5 +34,5 @@ bind '"\e[B": history-search-forward'
 # Aliases
 alias ls="ls --group-directories-first --color=always"
 alias ll="ls -la"
-alias fuck="sudo !!"
+alias fuck='sudo $(history -p \!\!)'
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-cp .zshrc ~/.zshrc
+cp .bashrc ~/.bashrc
 cp .vimrc ~/.vimrc
 
