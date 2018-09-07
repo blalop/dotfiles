@@ -1,11 +1,11 @@
 syntax on
+filetype indent plugin on
 
 set tabstop=4
 set softtabstop=4
 set expandtab
 
 set autoindent
-filetype indent plugin on
 
 set ignorecase
 set smartcase
@@ -25,4 +25,24 @@ set nowb
 set noswapfile
 
 set backspace=indent,eol,start
+set laststatus=2
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin('~/.vim/plugged')
+Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+call plug#end()
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
