@@ -1,6 +1,9 @@
 #
 # ~/.bashrc
 #
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -11,9 +14,10 @@ PS1='\W ➜ '
 # Envars
 export HISTCONTROL=ignoreboth
 export HISTSIZE=100000
-export PATH=$PATH:~/.gem/ruby/2.5.0/bin:~/go/bin:~/.npm-packages/bin
+export PATH=$PATH:$HOME/.gem/ruby/2.5.0/bin:$HOME/code/go/bin:$HOME/.npm-packages/bin
 export EDITOR="vim"
-export GEM_HOME=/home/alex/.gem/ruby/2.5.0
+export GEM_HOME=$HOME/.gem/ruby/2.5.0
+export GOPATH=$HOME/code/go
 
 # TAB completion
 bind 'TAB: menu-complete'
@@ -23,9 +27,6 @@ bind 'set completion-map-case on'
 bind 'set page-completions off'
 bind 'set menu-complete-display-prefix on'
 bind 'set completion-query-items 0'
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
 
 # History completion
 bind '"\e[A": history-search-backward'
