@@ -1,43 +1,30 @@
+filetype plugin on
 syntax on
-filetype indent plugin on
+set noswapfile
+set hidden
 
-set tabstop=4
+" menu
+set showcmd
+set wildmenu
+
+" search
+set hlsearch
+set ignorecase
+set smartcase
+
+" indent and tabs
+set autoindent
+set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-set autoindent
+" allow mouse
+set mouse=a
 
-set ignorecase
-set smartcase
-set hlsearch
-
+" line numbers
 set number
-set wildmenu
-set showcmd
-set lazyredraw
-set showmatch
-set ruler
-set hidden
-set nowrap
 
-set nobackup
-set nowb
-set noswapfile
-
+" allow going left
 set backspace=indent,eol,start
-set laststatus=2
+set whichwrap+=<,>,h,l,[,]
 
-call plug#begin('~/.vim/plugged')
-Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-call plug#end()
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
