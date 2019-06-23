@@ -7,17 +7,25 @@
 
 # Read system-wide config
 if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
+    . /etc/bashrc
 fi
 
 
 # Prompt
-export PS1="\[\e[1;34m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\] > "
+if [[ $EUID == 0 ]]; then
+    export PS1="\[\e[1;31m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\w\[\e[m\] on \[\e[1;33m\]\d \t\[\e[m\]\n> "
+else
+    export PS1="\[\e[1;34m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\w\[\e[m\] on \[\e[1;33m\]\d \t\[\e[m\]\n> "
+fi
 
-# Envars
+# History
 export HISTCONTROL=ignoreboth
 export HISTSIZE=100000
-export EDITOR="vim"
+export HISTTIMEFORMAT="%d/%m/%y %T "
+
+# History completion
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
 
 # TAB completion
 bind 'TAB: menu-complete'
@@ -31,9 +39,8 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-# History completion
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
+# Envars
+export EDITOR="vim"
 
 # Aliases
 alias ls="ls --group-directories-first --color=always"
