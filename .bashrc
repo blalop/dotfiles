@@ -12,7 +12,7 @@ fi
 
 
 # Prompt
-export PS1='$(if [[ $EUID > 0 ]]; then echo "\[\e[1;34m\]\u"; else echo "\[\e[1;31m\]\u"; fi)\e[0m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\] > '
+export PS1="\[\e[1;34m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\] > "
 
 # Envars
 export HISTCONTROL=ignoreboth
