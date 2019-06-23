@@ -13,14 +13,14 @@ fi
 
 # Prompt
 if [[ $EUID == 0 ]]; then
-    export PS1="\[\e[1;31m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\w\[\e[m\] on \[\e[1;33m\]\d \t\[\e[m\]\n> "
+    export PS1="\[\e[1;31m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\]: "
 else
-    export PS1="\[\e[1;34m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\w\[\e[m\] on \[\e[1;33m\]\d \t\[\e[m\]\n> "
+    export PS1="\[\e[1;34m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\]: "
 fi
 
 # History
 export HISTCONTROL=ignoreboth
-export HISTSIZE=100000
+export HISTSIZE=10000
 export HISTTIMEFORMAT="%d/%m/%y %T "
 
 # History completion
