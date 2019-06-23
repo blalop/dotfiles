@@ -1,4 +1,4 @@
-filetype plugin on
+filetype plugin indent on
 syntax on
 set noswapfile
 set hidden
@@ -6,6 +6,7 @@ set hidden
 " menu
 set showcmd
 set wildmenu
+set ruler
 
 " search
 set hlsearch
@@ -20,9 +21,6 @@ set expandtab
 
 " allow mouse
 set mouse=a
-
-" line numbers
-set number
 
 " allow going left
 set backspace=indent,eol,start
