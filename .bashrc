@@ -2,15 +2,17 @@
 # ~/.bashrc
 #
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Read system-wide config
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
 
 # Prompt
-PS1='\W ➜ '
+export PS1='$(if [[ $EUID > 0 ]]; then echo "\[\e[1;34m\]\u"; else echo "\[\e[1;31m\]\u"; fi)\e[0m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\] > '
 
 # Envars
 export HISTCONTROL=ignoreboth
@@ -28,6 +30,7 @@ bind 'set completion-query-items 0'
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
 # History completion
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
