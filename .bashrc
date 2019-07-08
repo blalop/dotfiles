@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # ~/.bashrc
 #
@@ -11,12 +12,18 @@ if [ -f /etc/bashrc ]; then
 fi
 
 
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
+
 # Prompt
-if [[ $EUID == 0 ]]; then
-    export PS1="\[\e[1;31m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\]: "
-else
-    export PS1="\[\e[1;34m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\]: "
-fi
+export PS1="\[\e[1;32m\]\W\[\e[m\]\[\e[1;34m\] >\[\e[m\] "
 
 # History
 export HISTCONTROL=ignoreboth

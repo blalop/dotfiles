@@ -1,3 +1,4 @@
+" looks
 filetype plugin indent on
 syntax on
 set noswapfile
@@ -26,3 +27,5 @@ set mouse=a
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l,[,]
 
+" clipboard (needs vim-gtk3)
+set clipboard=unnamedplus

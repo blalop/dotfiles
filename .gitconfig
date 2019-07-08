@@ -1,0 +1,14 @@
+[user]
+    name = Alejandro Blanco López
+    email = alexbl1996@gmail.com
+    username = blalop
+
+[core]
+    editor = vim
+
+[merge]
+    tool = diff
+
+[color]
+    ui = true
+
