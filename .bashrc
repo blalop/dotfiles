@@ -24,6 +24,7 @@ shopt -s cdspell
 
 # Prompt
 export PS1="\[\e[1;32m\]\W\[\e[m\]\[\e[1;34m\] >\[\e[m\] "
+export PS2="\[\e[1;34m\]>\[\e[m\] "
 
 # History
 export HISTCONTROL=ignoreboth
