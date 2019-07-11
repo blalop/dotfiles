@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# If not running interactively, don't do anything
+# if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 # Read system-wide config
@@ -57,7 +57,8 @@ alias lla="ls -lah --color=always --group-directories-first"
 ## path
 
 # add ruby gems path
-export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
+export GEM_HOME="$HOME/.gems"
+export PATH="$HOME/.gems/bin:$PATH"
 
 ## exports
 
