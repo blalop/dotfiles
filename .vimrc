@@ -29,3 +29,10 @@ set whichwrap+=<,>,h,l,[,]
 
 " clipboard (needs vim-gtk3)
 set clipboard=unnamedplus
+
+" automatic commands
+if has("autocmd")
+    " remember position
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+

@@ -1,14 +1,11 @@
 #!/bin/bash
-#
-# ~/.bashrc
-#
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 # Read system-wide config
 if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+    source /etc/bashrc
 fi
 
 
@@ -26,10 +23,6 @@ shopt -s cdspell
 export PS1="\[\e[1;32m\]\W\[\e[m\]\[\e[1;34m\] >\[\e[m\] "
 export PS2="\[\e[1;34m\]>\[\e[m\] "
 
-# History
-export HISTCONTROL=ignoreboth
-export HISTSIZE=10000
-export HISTTIMEFORMAT="%d/%m/%y %T "
 
 # History completion
 bind '"\e[A": history-search-backward'
@@ -44,13 +37,34 @@ bind 'set page-completions off'
 bind 'set menu-complete-display-prefix on'
 bind 'set completion-query-items 0'
 if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
 fi
 
-# Envars
-export EDITOR="vim"
+## alias
 
-# Aliases
-alias ls="ls --group-directories-first --color=always"
-alias ll="ls -la"
+# always list with color and with directories first
+alias ls="ls --color=always --group-directories-first"
+
+# list with color and long format
+alias ll="ls -lh --color=always --group-directories-first"
+
+# list hidden with color and with directories first
+alias la="ls -a --color=always --group-directories-first"
+
+# list hidden with color, long format and with directories first
+alias lla="ls -lah --color=always --group-directories-first"
+
+## path
+
+# add ruby gems path
+export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
+
+## exports
+
+# history
+export HISTCONTROL=ignoreboth
+export HISTSIZE=10000
+export HISTTIMEFORMAT="%d/%m/%y %T "
+
+export EDITOR="vim"
 
