@@ -54,6 +54,9 @@ alias la="ls -a --color=always --group-directories-first"
 # list hidden with color, long format and with directories first
 alias lla="ls -lah --color=always --group-directories-first"
 
+# cat with color
+alias ccat="highlight -O ansi"
+
 ## path
 
 # add ruby gems path

@@ -27,6 +27,10 @@ set mouse=a
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l,[,]
 
+" render boundary whitespaces
+set list
+set listchars=trail:·,tab:»·
+
 " clipboard (needs vim-gtk3)
 set clipboard=unnamedplus
 
