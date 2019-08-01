@@ -20,8 +20,8 @@ shopt -s histappend
 shopt -s cdspell
 
 # Prompt
-export PS1="\[\e[1;32m\]\W\[\e[m\]\[\e[1;34m\] >\[\e[m\] "
-export PS2="\[\e[1;34m\]>\[\e[m\] "
+export PS1="\[\e[1;34m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\]: "
+export PS2=": "
 
 
 # History completion

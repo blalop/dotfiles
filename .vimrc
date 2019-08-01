@@ -31,7 +31,7 @@ set whichwrap+=<,>,h,l,[,]
 set list
 set listchars=trail:·,tab:»·
 
-" clipboard (needs vim-gtk3)
+" use X11 clipboard (requires gvim)
 set clipboard=unnamedplus
 
 " automatic commands
