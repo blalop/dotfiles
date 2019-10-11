@@ -1,6 +1,6 @@
 #!/bin/bash
 # Installs some common utilities I use on a Debian system
-# This is for personal use, be aware!
+# This is for personal use, be aware and read carefully!
 
 set -e
 set -o pipefail
@@ -25,7 +25,7 @@ setup_repos() {
 EOF
 }
 
-upgrade() {
+upgrade_system() {
     apt update || true
     apt upgrade -y
 }
@@ -42,29 +42,24 @@ basic_utilities() {
         vim
 }
 
-nvidia() {
-    case $1 in
-        "desktop")
-            apt install -y \
-                linux-headers-"$(uname -r)" \
-                nvidia-driver
-            ;;
-        "laptop")
-            apt install -y \
-                nvidia-kernel-dkms \
-                bumblebee-nvidia \
-                primus \
-                tlp
-            # "acpi_osi=! acpi_osi='Windows 2009" may be required as kernel parms'
-            ;;
-        *)
-            echo "Usage: install.sh nvidia <desktop,laptop>"
-            exit 1
-            ;;
-    esac
+install_nvidia() {
+    if [ -d /sys/module/battery ]; then
+        # Assuming a laptop
+        # "acpi_osi=! acpi_osi='Windows 2009'" may be required as kernel parms
+        apt install -y \
+            nvidia-kernel-dkms \
+            bumblebee-nvidia \
+            primus \
+            tlp
+    else
+        # Desktop
+        apt install -y \
+            linux-headers-"$(uname -r)" \
+            nvidia-driver
+    fi
 }
 
-docker() {
+install_docker() {
     apt update || true
     apt install -y \
         apt-transport-https \
@@ -82,8 +77,8 @@ docker() {
         docker-ce \
         docker-ce-cli \
         containerd.io
-    
-    usermod -aG docker "$USER"
+
+    usermod -aG docker "$TARGET_USER"
 }
 
 c_dev() {
@@ -117,38 +112,54 @@ ruby_dev() {
         ruby-full
 }
 
-snap() {
+install_snap() {
     apt update || true
     apt install -y \
         snapd
+
+    snap install spotify
+    snap install code --classic
+    snap install eclipse --classic
 }
 
 config() {
-    cp -r config/.[!.]* "$HOME"
+    cp -r config/.[!.]* "/home/$TARGET_USER"
 
-    local vscodedir="$HOME/.config/Code/User"
+    local vscodedir="/home/$TARGET_USER/.config/Code/User"
     if [ -e "$vscodedir" ]; then
         cp config/settings.json "$vscodedir"
     fi
 }
 
 usage() {
-    echo "install.sh: basic setup automatic installer"
-    echo "Usage:"
+    echo "Usage install.sh <command> <user>"
+    echo "command"
     echo "  base        - setup sources and basic utils"
     echo "  nvidia      - setup nvidia graphic driver"
     echo "  dev         - setup c, java, py and ruby dev env"
     echo "  docker      - setup docker"
-    echo "  snap        - setup snap plus some snaps"
+    echo "  snap        - setup snap"
     echo "  config      - copy config files to user folder"
+    echo "  usage       - this menu"
+    echo "  all         - all of the above"
 }
 
 main() {
-    local cmd=$1
-    local version
-    version="$(grep NAME /etc/*{release,version})"
-    if [[ ! $version == *"Debian"* ]]; then
+    readonly TARGET_USER="${2:-${SUDO_USER:-USER}}"
+
+    if [[ ! "$(grep NAME /etc/*{release,version})" == *"Debian"* ]]; then
         echo "Not running a Debian system"
+        exit 1
+    fi
+
+    local cmd=$1
+    if [[ -z "$cmd" ]]; then
+        usage
+        exit 1
+    fi
+
+    read -r -p "Install $cmd for user $TARGET_USER? [y/n] " input
+    if  [[ ! $input =~ ^[Yy]$ ]]; then
         exit 1
     fi
 
@@ -156,16 +167,16 @@ main() {
     "base")
         check_if_sudo
         setup_repos
-        upgrade
+        upgrade_system
         basic_utilities
         ;;
     "nvidia")
         check_if_sudo
-        nvidia "$2"
+        install_nvidia
         ;;
     "dev")
         check_if_sudo
-        upgrade
+        upgrade_system
         c_dev
         java_dev
         python_dev
@@ -173,18 +184,31 @@ main() {
         ;;
     "docker")
         check_if_sudo
-        docker
+        install_docker
         ;;
     "snap")
         check_if_sudo
-        snap
+        install_snap
         ;;
     "config")
         config
         ;;
-    *)
+    "usage")
         usage
-        exit 1
+        ;;
+    "all")
+        check_if_sudo
+        setup_repos
+        upgrade_system
+        basic_utilities
+        install_nvidia
+        c_dev
+        java_dev
+        python_dev
+        ruby_dev
+        install_docker
+        install_snap
+        config
         ;;
     esac
 }
