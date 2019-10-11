@@ -35,7 +35,7 @@ basic_utilities() {
     apt install -y \
         build-essential \
         git \
-        neofetch \ # Truly, a basic utility.
+        neofetch \
         texlive \
         tree \
         tmux \
@@ -46,14 +46,14 @@ nvidia() {
     case $1 in
         "desktop")
             apt install -y \
-                linux-headers-"$(uname -r)"
+                linux-headers-"$(uname -r)" \
                 nvidia-driver
             ;;
         "laptop")
             apt install -y \
-                nvidia-kernel-dkms
-                bumblebee-nvidia
-                primus
+                nvidia-kernel-dkms \
+                bumblebee-nvidia \
+                primus \
                 tlp
             # "acpi_osi=! acpi_osi='Windows 2009" may be required as kernel parms'
             ;;
@@ -121,16 +121,10 @@ snap() {
     apt update || true
     apt install -y \
         snapd
-
-    snap install spotify
-    snap install code --classic
-    snap install eclipse --classic
 }
 
 config() {
-    for dotfile in config/.*; do
-        cp -r "$dotfile" "$HOME"
-    done
+    cp -r config/.[!.]* "$HOME"
 
     local vscodedir="$HOME/.config/Code/User"
     if [ -e "$vscodedir" ]; then
