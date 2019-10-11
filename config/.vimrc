@@ -31,9 +31,6 @@ set whichwrap+=<,>,h,l,[,]
 set list
 set listchars=trail:·,tab:»·
 
-" use X11 clipboard (requires gvim)
-set clipboard=unnamedplus
-
 " automatic commands
 if has("autocmd")
     " remember position

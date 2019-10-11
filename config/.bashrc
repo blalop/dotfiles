@@ -57,14 +57,6 @@ alias lla="ls -lah --color=always --group-directories-first"
 # cat with color
 alias ccat="highlight -O ansi"
 
-## path
-
-# add ruby gems path
-export GEM_HOME="$HOME/.gems"
-export PATH="$HOME/.gems/bin:$PATH"
-
-## exports
-
 # history
 export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
@@ -72,3 +64,4 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 
 export EDITOR="vim"
 
+source ~/.profile
