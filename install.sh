@@ -34,6 +34,7 @@ basic_utilities() {
     apt update || true
     apt install -y \
         build-essential \
+        intel-microcode \
         git \
         neofetch \
         texlive \
@@ -72,6 +73,8 @@ install_docker() {
     apt-key fingerprint 0EBFCD88
     add-apt-repository \
         "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+
+    apt update || true
 
     apt install -y \
         docker-ce \
@@ -145,7 +148,7 @@ usage() {
 }
 
 main() {
-    readonly TARGET_USER="${2:-${SUDO_USER:-USER}}"
+    readonly TARGET_USER="${2:-${SUDO_USER:-$USER}}"
 
     if [[ ! "$(grep NAME /etc/*{release,version})" == *"Debian"* ]]; then
         echo "Not running a Debian system"
