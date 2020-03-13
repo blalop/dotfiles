@@ -11,8 +11,9 @@ shopt -s checkwinsize
 shopt -s histappend
 shopt -s cdspell
 
-export PS1="\[\e[1;34m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\]: "
-export PS2=": "
+source /usr/lib/git-core/git-sh-prompt
+export PS1='\[\e[1;34m\]\u\[\e[m\] at \[\e[1;32m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\]$(__git_ps1 " branch \[\e[1;33m\]%s\[\e[m\]"): '
+export PS2=': '
 
 bind 'TAB: menu-complete'
 bind 'set show-all-if-ambiguous on'
