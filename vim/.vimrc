@@ -1,8 +1,15 @@
+" settings
+set encoding=utf-8
+set autowrite
+set noswapfile
+set hidden
+set fileformats=unix,dos,mac
+
 " looks
 filetype plugin indent on
 syntax on
-set noswapfile
-set hidden
+set number
+set noerrorbells
 
 " menu
 set showcmd
@@ -21,7 +28,9 @@ set softtabstop=4
 set expandtab
 
 " allow mouse
-set mouse=a
+if has('mouse')
+    set mouse=a
+endif
 
 " allow going left
 set backspace=indent,eol,start
@@ -29,7 +38,18 @@ set whichwrap+=<,>,h,l,[,]
 
 " render boundary whitespaces
 set list
-set listchars=trail:·,tab:»·
+set listchars=trail:·,tab:>·
+
+" mappings
+:inoremap ( ()<Esc>:let leavechar=")"<CR>i
+:inoremap [ []<Esc>:let leavechar="]"<CR>i
+:inoremap { {}<Esc>:let leavechar="}"<CR>i
+:inoremap " ""<Esc>:let leavechar="""<CR>i
+:inoremap ' ''<Esc>:let leavechar="'"<CR>i
+
+if has('unnamedplus')
+    set clipboard=unnamedplus
+endif
 
 " automatic commands
 if has("autocmd")
