@@ -1,3 +1,6 @@
+#!/bin/bash
+
+[[ $- != *i* ]] && return
 
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
@@ -7,26 +10,43 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+
+if [ -d /etc/bash_completion.d/ ]; then
+    for file in /etc/bash_completion.d/* ; do
+        source "$file"
+    done
+fi
+
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s cdspell
-
-bind 'TAB: menu-complete'
-bind 'set show-all-if-ambiguous on'
-bind 'set completion-ignore-case on'
-bind 'set completion-map-case on'
-bind 'set page-completions off'
-bind 'set menu-complete-display-prefix on'
-bind 'set completion-query-items 0'
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-
-export PATH
+shopt -s nocaseglob
 
 export PS1='> '
 export PS2='> '
 export EDITOR=vim
+
+export GOPATH="$HOME/.go"
+export GEM_HOME="$HOME/.gems"
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.gems/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias grep="grep --color=auto"
+alias ls='ls --color=auto --group-directories-first'
+alias ll="LC_COLLATE=C ls -lhFN"
+alias la="ll -a"
+alias clr="clear"
+
+alias timestamp="date +%Y%m%d%H%M%Sa"
+alias intip="ip route get 1 | awk '{print \$(NF-2);exit}'"
+alias extip="curl --silent -4 https://icanhazip.com"
+alias open="xdg-open"
+alias path='echo -e ${PATH//:/\\n}'
+alias ports="netstat -tulpn"
+alias webserv="python3 -m http.server"
+

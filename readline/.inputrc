@@ -1,0 +1,15 @@
+
+set show-all-if-unmodified on
+set completion-ignore-case on
+set completion-map-case on
+set match-hidden-files off
+set skip-completed-text on
+set page-completions off
+set completion-query-items 30
+set visible-stats on
+set input-meta on
+set output-meta on
+set convert-meta off
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\C-h": backward-kill-word
