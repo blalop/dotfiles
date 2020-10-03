@@ -3,11 +3,11 @@
 [[ $- != *i* ]] && return
 
 if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+    source /etc/bashrc
 fi
 
 if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
 fi
 
 
@@ -21,9 +21,8 @@ shopt -s checkwinsize
 shopt -s histappend
 shopt -s cdspell
 shopt -s nocaseglob
-
-export PS1='> '
-export PS2='> '
+export PS1="\[\e[1;32m\]\u\[\e[m\] at \[\e[1;36m\]\h\[\e[m\] in \[\e[1;35m\]\W\[\e[m\] time \[\e[1;33m\]\t\[\e[m\]: "
+export PS2=': '
 export EDITOR=vim
 
 export GOPATH="$HOME/.go"
@@ -43,10 +42,7 @@ alias la="ll -a"
 alias clr="clear"
 
 alias timestamp="date +%Y%m%d%H%M%Sa"
-alias intip="ip route get 1 | awk '{print \$(NF-2);exit}'"
-alias extip="curl --silent -4 https://icanhazip.com"
 alias open="xdg-open"
 alias path='echo -e ${PATH//:/\\n}'
-alias ports="netstat -tulpn"
 alias webserv="python3 -m http.server"
 
