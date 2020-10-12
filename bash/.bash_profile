@@ -1,4 +1,5 @@
+#!/bin/bash
 
 if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
+    source ~/.bashrc
 fi
