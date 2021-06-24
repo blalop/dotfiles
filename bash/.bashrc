@@ -43,7 +43,12 @@ PS2="> "
 export EDITOR=vim
 
 export GOPATH="$HOME/.go"
+
 export GEM_HOME="$HOME/.gems"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.gems/bin:$PATH"
@@ -60,13 +65,13 @@ alias diff="diff --color=auto"
 alias ls='ls --color=auto --group-directories-first'
 alias ll="LC_COLLATE=C ls -lhFN"
 alias la="ll -a"
-alias clr="clear"
 alias tree="tree -aC -I '.git' --dirsfirst"
 
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias map="xargs -n1"
 alias timestamp="date +%Y%m%d%H%M%Sa"
 alias open="xdg-open"
 alias path='echo -e ${PATH//:/\\n}'
-alias webserv="python3 -m http.server"
+alias www="python3 -m http.server"
 alias urlencode='python3 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 alias chrome="/opt/google/chrome/chrome"
