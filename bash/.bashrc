@@ -54,6 +54,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.gems/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.go/bin:$PATH"
+export PATH="$HOME/.espressif/xtensa-lx106-elf/bin:$PATH"
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -67,7 +68,7 @@ alias ll="LC_COLLATE=C ls -lhFN"
 alias la="ll -a"
 alias tree="tree -aC -I '.git' --dirsfirst"
 
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'  # usage: command; alert
 alias map="xargs -n1"
 alias timestamp="date +%Y%m%d%H%M%Sa"
 alias open="xdg-open"
