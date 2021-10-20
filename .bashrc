@@ -27,8 +27,8 @@ shopt -s globstar # pattern "**" matches recursively
 shopt -s cdspell # Autocorrect typos in path names when using `cd`
 shopt -s nocaseglob # Case-insensitive globbing (used in pathname expansion)
 
-PS1="> "
-PS2="> "
+PS1="\[\e[1;34m\]>\[\e[m\] "
+PS2="\[\e[34m\]>\[\e[m\] "
 
 export EDITOR=vi
 
