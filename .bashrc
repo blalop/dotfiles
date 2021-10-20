@@ -59,7 +59,7 @@ alias open="xdg-open"
 
 # Functions
 drun() {
- docker run -it geerlingguy/docker-"${1:-debian11}"-ansible /bin/bash
+ docker run -it "${1:-debian}" bash
 }
 
 denter() {
