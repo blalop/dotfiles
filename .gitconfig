@@ -1,0 +1,18 @@
+[user]
+    name = Alejandro Blanco
+    email = alexbl1996@gmail.com
+[core]
+    editor = vi
+
+[merge]
+    tool = diff
+
+[color]
+    ui = true
+
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    cm = commit -m
+    l = log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit

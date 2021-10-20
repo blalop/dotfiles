@@ -1,0 +1,6 @@
+set show-all-if-unmodified on
+set completion-ignore-case on
+
+"\e[A": history-search-backward # Allow up autocompletion of commands from bash history
+"\e[B": history-search-forward # Allow down autocompletion of commands from bash history
+"\C-h": backward-kill-word # Ctrl + Backspace to delete whole word
