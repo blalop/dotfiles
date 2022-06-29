@@ -56,3 +56,10 @@ alias tree="tree -aC -I '.git' --dirsfirst"
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'  # usage: command; alert
 alias timestamp="date +%Y%m%d%H%M%Sa"
 alias open="xdg-open"
+
+
+# Run tmux
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
