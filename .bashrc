@@ -32,7 +32,7 @@ PS2="\[\e[34m\]>\[\e[m\] "
 
 export EDITOR=vi
 
-# Development
+# Path & Development
 export GOPATH="$HOME/.go"
 export GEM_HOME="$HOME/.gems"
 export NVM_DIR="$HOME/.nvm"
@@ -57,9 +57,18 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias timestamp="date +%Y%m%d%H%M%Sa"
 alias open="xdg-open"
 
+# Functions
+drun() {
+ docker run -it "${1:-debian}" bash
+}
 
-# Run tmux
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
+denter() {
+ if [[ ! "$1" ]] ; then
+     echo "You must supply a container ID or name."
+     return 1
+ fi
+
+ docker exec -it "$1" bash
+ return 0
+}
 
