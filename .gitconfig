@@ -11,8 +11,12 @@
     ui = true
 
 [alias]
-    st = status
-    co = checkout
-    br = branch
+    a = add -A
+    b = branch
+    cam = !git add -A && git commit -avm
+    cl = clone
     cm = commit -m
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    co = checkout
+    cob = checkout -b
+    s = status -s
+    sh = stash
