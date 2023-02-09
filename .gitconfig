@@ -18,5 +18,5 @@
     cm = commit -m
     co = checkout
     cob = checkout -b
-    s = status -s
+    st = status -s
     sh = stash

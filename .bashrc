@@ -45,11 +45,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.go/bin:$PATH"
 
 # Aliases
-alias d="pwd"
-alias g="git"
-alias l="ll"
-alias t="tmux"
-alias v="ivim"
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
@@ -65,10 +60,6 @@ alias httpserv="python3 -m http.server"
 alias pubip="curl https://ipinfo.io/ip; echo"
 
 # Functions
-ivim() {
-    vim "${1:-.}"
-}
-
 drun() {
     docker run -it "${1:-debian}" bash
 }
@@ -76,3 +67,4 @@ drun() {
 denter() {
     docker exec -it "$1" bash
 }
+
